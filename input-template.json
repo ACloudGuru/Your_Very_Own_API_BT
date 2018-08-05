@@ -1,0 +1,3 @@
+{ 
+	"joke_id" : "$input.params('joke_id')" 
+}
