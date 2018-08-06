@@ -5,6 +5,7 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 // Creating an eviornment variable to store DynamoDB table name
 const TABLE_NAME = process.env.table_name;
+const EMAIL_ADDRESS = process.env.email;
 
 exports.handler = async (event, context, callback) => {
     
@@ -12,7 +13,10 @@ exports.handler = async (event, context, callback) => {
     const options = {
         host: 'icanhazdadjoke.com',
         method: 'GET',
-        headers: { 'Accept': 'application/json' }
+        headers: { 
+            'Accept': 'application/json',
+            'User-Agent' : 'A Cloud Guru Makerlab - ' + EMAIL_ADDRESS
+        }
     };
     
     // Creates a promise to retrieve data from 
@@ -54,3 +58,4 @@ exports.handler = async (event, context, callback) => {
         });
      });
 };
+
